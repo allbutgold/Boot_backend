@@ -48,3 +48,17 @@ export const addBoat = async (req, res) => {
     }
 
 }
+export const addReservation = async (req, res) => {
+    try {
+        const db = await getDb()
+        const results = await db.collection(COL).updateOne({_id: ObjectId(req.body._id)},{
+            $push: {reservations: req.body}
+        })
+        console.log(results)
+        res.end()
+    }catch(err) {
+        console.error(err)
+        res.sendStatus(500)
+    }
+
+}

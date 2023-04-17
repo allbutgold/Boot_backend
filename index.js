@@ -24,9 +24,7 @@ app.post('/api/v1/boat', (req,res)=>{
     res.sendStatus(200)
 })
 
-app.put('/api/v1/boat', (req,res)=>{
-    res.sendStatus(200)
-})
+app.put('/api/v1/boat', addReservation)
 app.put('/api/v1/reservation', (req,res)=>{
     res.sendStatus(200)
 })
