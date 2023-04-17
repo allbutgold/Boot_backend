@@ -1,11 +1,11 @@
-import { getDB } from "./db.js";
+import { getDb } from "./db.js";
 
 const COL = 'reservations';
 
 export const getReservations = async (req, res) => {
   console.log(req.headers)
   try {
-    const db = await getDB();
+    const db = await getDb();
     const reservations = await db.collection(COL).find().toArray();
     console.log(reservations)
     if (reservations === null) res.end()
@@ -20,7 +20,7 @@ export const getReservations = async (req, res) => {
 export const addReservations = async (req, res) => {
   console.log(req.body)
   try {
-    const db = await getDB();
+    const db = await getDb();
     const reservations = await db.collection(COL).insertOne(req.body);
     res.json(reservations)
   } catch (err) {
