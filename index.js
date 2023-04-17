@@ -4,7 +4,7 @@ import mongodb from 'mongodb';
 
 import './util/config.js'
 import { getReservations, addReservations } from './util/resController.js';
-import {getBoats, addBoat,getAvailiableBoats} from './controller/boatController.js'
+import {getBoats, addBoat,getAvailiableBoats, addReservation} from './controller/boatController.js'
 
 const PORT = 9898
 const app = express()
