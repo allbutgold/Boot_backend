@@ -19,17 +19,13 @@ export const getBoats = async (req,res) => {
 export const getAvailiableBoats = async (req,res) => {
     try {
         const db = await getDb()
-        const docs = await db.collection(COL).find({reservations: {$all: {
-            $or: [{
-                endDate: { $lt: req.body.startDate },
-            }, 
-            {
-                startDate: { $gt: req.body.endDate },
-            }]
+        const docs = await db.collection(COL).find({reservations: {$not:{
+          $elemMatch: {
+            endDate: { $gte: req.body.endDate },
+            startDate: { $lte: req.body.startDate}
             
             
-            
-            }}}).toArray()
+    }}}}).toArray() 
         if(docs==null) return res.end()
         res.json(docs)
     }catch(err) {
