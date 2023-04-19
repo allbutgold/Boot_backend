@@ -9,7 +9,8 @@ import {getBoats, addBoat,getAvailiableBoats, addReservation} from './controller
 const PORT = 9898
 const app = express()
 
-app.use(cors())
+app.use(cors({origin: "https://bootfrontend-production.up.railway.app/"}))
+
 app.use(express.json())
 
 app.get('/api/v1/boats',  getBoats)
